@@ -1,11 +1,11 @@
 #include <Keyboard.h>
 // these constants won't change:
 const int ledPin = 13;       // LED connected to digital pin 13
-const int knockSensor = A3;  // the piezo is connected to analog pin 0
-const int knockSensor2 = A2;  // the piezo is connected to analog pin 1
-const int knockSensor3 = A1;  // the piezo is connected to analog pin 2
-const int knockSensor4 = A0;  // the piezo is connected to analog pin 3
-const int threshold = 20;   // threshold value to decide when the detected sound is a knock or not
+const int knockSensor = A0;  // the piezo is connected to analog pin 0
+const int knockSensor2 = A1;  // the piezo is connected to analog pin 1
+const int knockSensor3 = A2;  // the piezo is connected to analog pin 2
+const int knockSensor4 = A3;  // the piezo is connected to analog pin 3
+const int threshold = 40;   // threshold value to decide when the detected sound is a knock or not
 
 
 // these variables will change:
@@ -41,7 +41,7 @@ void loop() {
     // send the string "Knock!" back to the computer, followed by newline
     Serial.println(sensorReading);
     //Keyboard.write('a');
-    Keyboard.press('j');
+    Keyboard.press('a');
     key1 = true;
   }
 
@@ -52,7 +52,7 @@ void loop() {
     digitalWrite(ledPin, ledState);
     // send the string "Knock!" back to the computer, followed by newline
     Serial.println(sensorReading2);
-    Keyboard.press('k');
+    Keyboard.press('s');
     key2 = true;
   }
 
@@ -63,7 +63,7 @@ void loop() {
     digitalWrite(ledPin, ledState);
     // send the string "Knock!" back to the computer, followed by newline
     Serial.println(sensorReading3);
-    Keyboard.press('l');
+    Keyboard.press('d');
     key3 = true;
   }
 
@@ -74,27 +74,27 @@ void loop() {
     digitalWrite(ledPin, ledState);
     // send the string "Knock!" back to the computer, followed by newline
     Serial.println(sensorReading4);
-    Keyboard.press(';');
+    Keyboard.press('f');
     key4 = true;
   }
   
   if(sensorReading <= 0 && key1){
-    Keyboard.release('j');
+    Keyboard.release('a');
     key1 = false;
   }
 
   if(sensorReading2 <= 0 && key2){
-    Keyboard.release('k');
+    Keyboard.release('s');
     key2 = false;
   }
 
   if(sensorReading3 <= 0 && key3){
-    Keyboard.release('l');
+    Keyboard.release('d');
     key3 = false;
   }
 
   if(sensorReading4 <= 0 && key4){
-    Keyboard.release(';');
+    Keyboard.release('f');
     key4 = false;
   }
   delay(20);
